@@ -1,6 +1,22 @@
-<html>
-    <body>
-        <h1>Bienvenido a la Práctica Formativa</h1>
-        <h2>Generacion de conflicto</h2>
-    </body>
-</html>
+<html><body><h1>Bienvenido a la Práctica Formativa</h1></body></html>
+<form id="userForm">
+    <input type="text" placeholder="Ingrese su nombre de usuario" required>
+    <input type="password" placeholder="Contraseña" required>
+    <button type="submit">Enviar</button>
+</form>
+
+document.getElementById('userForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const data = {
+        username: e.target[0].value,
+        password: e.target[1].value
+    };
+    fetch('url_del_backend', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+});
+
